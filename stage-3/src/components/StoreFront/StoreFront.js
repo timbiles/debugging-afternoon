@@ -4,37 +4,42 @@ import { connect } from 'react-redux';
 import { addToShoppingCart, getAllProducts } from '../../redux/reducer';
 
 class StoreFront extends Component {
+  componentDidMount() {
+    this.props.getAllProducts();
+  }
 
-    componentDidMount() {
-        this.props.getAllProducts();
-    }
-
-    render() {
-        console.log(this.props.products);
-        let productDisplay = this.props.products.map((element, index) => {
-            return (
-                <div className="product-container" key={index}>
-                    <h2>{element.title}</h2>
-                    <img src={element.image} alt="" />
-                    <h2>{element.desc}</h2>
-                    <h3>{"$" + element.price + ".00"}</h3>
-                    <button onClick={() => this.props.addToShoppingCart(element)}>Purchase!</button>
-                </div>
-            )
-        })
-        return (
-            <div className="storefront-container">
-                {productDisplay}
-            </div>
-        )
-    }
+  render() {
+    console.log(this.props.products);
+    const { products } = this.props;
+    let productDisplay = products.map((element, index) => {
+      return (
+        <div className="product-container" key={index}>
+          <h2>{element.title}</h2>
+          <img src={element.image} alt="" />
+          <h2>{element.desc}</h2>
+          <h3>{'$' + element.price + '.00'}</h3>
+          <button onClick={() => this.props.addToShoppingCart(element)}>
+            Purchase!
+          </button>
+        </div>
+      );
+    });
+    return <div className="storefront-container">{productDisplay}</div>;
+  }
 }
 
 function mapStateToProps(state) {
-    return {
-        products: state.products,
-        loading: state.loading,
-    }
+  const { products, loading } = state;
+  return {
+    products,
+    loading
+  };
 }
 
-export default connect(mapStateToProps, {addToShoppingCart, getAllProducts})(StoreFront);
+export default connect(
+  mapStateToProps,
+  { addToShoppingCart, getAllProducts }
+)(StoreFront);
+
+
+
