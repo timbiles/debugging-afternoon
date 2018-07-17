@@ -17,7 +17,7 @@ class NavBar extends Component {
             <div>
                 <div className="navbar-container">
                     <div className="logo-container">
-                        <Link to="/"><img className="logo-image" src={Logo} alt="" /></Link>
+                        <Link to="/"><img className="logo-image" src={Logo} alt="Dev Mountian Logo" /></Link>
                     </div>
 
                     <div className="navbar-links-container">
