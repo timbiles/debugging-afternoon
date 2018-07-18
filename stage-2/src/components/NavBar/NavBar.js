@@ -10,14 +10,14 @@ class NavBar extends Component {
             <div>
                 <div className="navbar-container">
                     <div className="logo-container">
-                        <Link to="/"><img className="logo-image" src={Logo} alt="" /></Link>
+                        <Link to="/" replace><img className="logo-image" src={Logo} alt=""/></Link>
                     </div>
 
                     <div className="navbar-links-container">
                         <ul className="navbar-links">
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/storefront">Store</Link></li>
-                            <li><Link to="/shoppingcart">Shopping Cart</Link></li>
+                            <li><Link to="/" replace>Home</Link></li>
+                            <li><Link to="/storefront" replace>Store</Link></li>
+                            <li><Link to="/shoppingcart" replace>Shopping Cart</Link></li>
                         </ul>
                     </div>
                 </div>
